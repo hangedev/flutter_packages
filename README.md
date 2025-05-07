@@ -1,3 +1,9 @@
+# 🚨 **重要提示 | IMPORTANT**
+>
+> **⚠️ 此代码仓已归档。新地址请访问 [flutter_packages](https://gitcode.com/openharmony-sig/flutter_packages)。| ⚠️ This repository has been archived. For the new address, please visit [flutter_packages](https://gitcode.com/openharmony-sig/flutter_packages).**
+>
+---
+>
 ## 仓库介绍
 
 该仓库基于上游Flutter社区[packages仓库](https://github.com/flutter/packages/),基于commitId：b8b84b2304f00a3f93ce585cc7a30e1235bde7a0。

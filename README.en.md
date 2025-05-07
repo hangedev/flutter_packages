@@ -1,3 +1,9 @@
+# 🚨 **重要提示 | IMPORTANT**
+>
+> **⚠️ 此代码仓已归档。新地址请访问 [flutter_packages](https://gitcode.com/openharmony-sig/flutter_packages)。| ⚠️ This repository has been archived. For the new address, please visit [flutter_packages](https://gitcode.com/openharmony-sig/flutter_packages).**
+>
+---
+>
 ## Warehouse introduction
 
 The warehouse is based on the upstream Flutter community [packages warehouse] (https://github.com/flutter/packages/), based on commitId: b8b84b2304f00a3f93ce585cc7a30e1235bde7a0.
