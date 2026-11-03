@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2023 Huawei Device Co., Ltd.
+
+    Redistribution and use in source and binary forms, with or without modification,
+    are permitted provided that the following conditions are met:
+
+        * Redistributions of source code must retain the above copyright
+        notice, this list of conditions and the following disclaimer.
+        * Redistributions in binary form must reproduce the above
+        copyright notice, this list of conditions and the following
+        disclaimer in the documentation and/or other materials provided
+        with the distribution.
+        * Neither the name of the copyright holder nor the names of its
+        contributors may be used to endorse or promote products derived
+        from this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+    ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+    WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR 
+    ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES 
+    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON 
+    ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
+    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
+    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+    licensefile:
+    1.If the project don't have "LICENSE" in root dir, please define all the license files in this project in , OAT will check license files according to this rule.
+
+    policylist:
+    1. policy: If the OAT-Default.xml policies do not meet your requirements, please add policies here.
+    2. policyitem: The fields type, name, path, desc is required, and the fields rule, group, filefilter is optional,the default value is:
+    <policyitem type="" name="" path="" desc="" rule="may" group="defaultGroup" filefilter="defaultPolicyFilter"/>
+    3. policyitem type:
+        "compatibility" is used to check license compatibility in the specified path;
+        "license" is used to check source license header in the specified path;
+        "copyright" is used to check source copyright header in the specified path;
+        "import" is used to check source dependency in the specified path, such as import ... ,include ...
+        "filetype" is used to check file type in the specified path, supported file types: archive, binary
+        "filename" is used to check whether the specified file exists in the specified path(projectroot means the root dir of the project), supported file names: LICENSE, README, README.OpenSource
+    4. policyitem name: This field is used for define the license, copyright, "*" means match all, the "!" prefix means could not match this value. For example, "!GPL" means can not use GPL license.
+    5. policyitem path: This field is used for define the source file scope to apply this policyitem, the "!" prefix means exclude the files. For example, "!.*/lib/.*" means files in lib dir will be exclude while process this policyitem.
+    6. policyitem rule and group: These two fields are used together to merge policy results. "may" policyitems in the same group means any one in this group passed, the result will be passed.
+    7. policyitem filefilter: Used to bind filefilter which define filter rules.
+    7. policyitem desc: Used to describe the reason of this policy item, committers will check this while merging the code.
+    8. filefilter: Filter rules, the type filename is used to filter file name, the type filepath is used to filter file path.
+
+    Note:If the text contains special characters, please escape them according to the following rules:
+    " == &quot;
+    & == &amp;
+    ' == &apos;
+    < == &lt;
+    > == &gt;
+-->
+
+<configuration>
+    <oatconfig>
+        <licensefile></licensefile>
+        <policylist>
+            <policy
+                desc=""
+                name="projectPolicy">
+                <policyitem type="copyright" name="Hunan OpenValley Digital Industry Development Co., Ltd." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc="Developed by OpenValley Digital Co., Ltd."/>
+                <policyitem type="copyright" name="Huawei Technologies Co., Ltd." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc="Developed By Huawei Technologies Co., Ltd."/>
+                <policyitem type="copyright" name="SwanLink (Jiangsu) Technology Development Co., LTD." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc="Developed By SwanLink (Jiangsu) Technology Development Co., LTD"/>
+                <policyitem type="copyright" name="The Flutter Authors. All rights reserved" path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc="Developed By The Flutter Authors. All rights reserved."/>
+                <policyitem type="license" name="BSD-3-Clause" path=".*" filefilter="defaultPolicyFilter" desc="不影响兼容性"/>
+                <policyitem type="license" name="BSD 3-Clause License" path=".*" filefilter="defaultPolicyFilter" desc="不影响兼容性"/>
+                <policyitem type="license" name="BSD-2-Clause" path=".*" filefilter="defaultPolicyFilter" desc="不影响兼容性"/>
+                <policyitem type="license" name="BSD 2-Clause License" path=".*" filefilter="defaultPolicyFilter" desc="不影响兼容性"/>
+                <policyitem type="license" name="BSDStyleLicense" path=".*" filefilter="defaultPolicyFilter" desc="不影响兼容性"/>
+                <policyitem type="compatibility" name="BSD-3-Clause" path=".*" desc="不影响兼容性"/>
+                <policyitem type="compatibility" name="BSD-2-Clause" path=".*" desc="不影响兼容性"/>
+                <policyitem type="compatibility" name="GPL-2.0+" path=".*" desc="Process that runs independently, invoked by the X process."/>
+                <policyitem type="compatibility" name="Apache-2.0" path=".*" desc="不影响兼容性"/>
+                <policyitem type="compatibility" name="BSDStyleLicense" path=".*" desc="不影响兼容性" />
+            </policy>
+        </policylist>
+        <filefilterlist>
+            <filefilter name="defaultFilter" desc="Files not to check">
+                <filteritem type="filename" name="*.so|*.har|*.dat|*.jar" desc="二进制文件,不影响兼容性"/>
+                <filteritem type="filename" name="*.xml|*.iml|*.json|*.txt|*.yaml|*.yml|*.md|*.metadata|*.bat|*.podspec|*.storyboard|*.plist|*.xcworkspacedata|*.xcscheme|*.xcsettings|*.xcconfig|*.xcprivacy|*.pbxproj|*.modulema|*.modulemap|*.h|*.m" desc="desc files"/>
+                <filteritem type="filename" name="*.png|*.ico|*.jpg|*.jpeg|*.webp|*.ttf|*.enc|*.mp3|*.mp4|*.ogg|*.gif|*.json5" desc="app resource files"/>
+                <filteritem type="filename" name="LICENSE|README.OpenSource|AUTHORS|CHANGELOG|PATENTS|CODEOWNERS|Podfile" desc="说明文件，不需要添加版权头"/>
+                <filteritem type="filename" name="*.tgz" desc="hvigor配置文件,不影响兼容性"/>
+                <filteritem type="filename" name="*hvigorfile.ts" desc="hvigor配置文件，不手动修改"/>
+                <filteritem type="filename" name="*hvigorw.bat" desc="hvigor配置文件，不手动修改"/>
+                <filteritem type="filename" name="*hvigor-wrapper.js" desc="hvigor配置文件，不手动修改"/>
+                <filteritem type="filename" name="*hvigorw" desc="hvigor配置文件，不手动修改"/>
+                <filteritem type="filename" name="*.json5" desc="项目工程默认文件，不需要添加版权头"/>
+                <filteritem type="filename" name="*Ability.test.ets" desc="项目工程默认文件，不需要添加版权头"/>
+                <filteritem type="filename" name="*List.test.ets" desc="项目工程默认文件，不需要添加版权头"/>
+                <filteritem type="filename" name="*TestAbility.ets" desc="项目工程默认文件，不需要添加版权头"/>
+                <filteritem type="filename" name="*OpenHarmonyTestRunner.ts" desc="项目工程默认文件，不需要添加版权头"/>
+                <filteritem type="filename" name="*GeneratedPluginRegistrant.ets" desc="项目工程默认文件，不需要添加版权头"/>
+                <filteritem type="filepath" name="script/*" desc="desc files"/>
+                <filteritem type="filepath" name="third_party/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/xdg_directories/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/cross_file/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/css_colors/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/dynamic_layouts/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/e2e/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/espresso/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/extension_google_sign_in_as_googleapis_auth/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/flutter_adaptive_scaffold/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/flutter_image/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/flutter_lints/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/flutter_markdown/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/flutter_migrate/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/flutter_plugin_android_lifecycle/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/flutter_template_images/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/go_router/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/go_router_builder/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/google_identity_services_web/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/google_maps_flutter/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/google_sign_in/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/integration_test/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/ios_platform_images/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/metrics_center/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/multicast_dns/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/palette_generator/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/platform/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/plugin_platform_interface/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/pointer_interceptor/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/quick_actions/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/rfw/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/standard_message_codec/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/two_dimensional_scrollables/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/web_benchmarks/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/webview_flutter_platform_interface-v2.10.0/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/animations/lib/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/animations/test/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/animations/example/web/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/animations/example/android/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/animations/example/assets/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/animations/example/demo_gifs/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/animations/example/ios/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/animations/example/lib/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/animations/example/screenshots/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/animations/example/test/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/camera/camera_windows/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/camera/camera/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/camera/camera_android/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/camera/camera_android_camerax/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/camera/camera_avfoundation/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/camera/camera_platform_interface/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/camera/camera_web/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/file_selector/file_selector/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/file_selector/file_selector_android/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/file_selector/file_selector_ios/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/file_selector/file_selector_linux/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/file_selector/file_selector_macos/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/file_selector/file_selector_platform_interface/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/file_selector/file_selector_web/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/file_selector/file_selector_windows/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/image_picker/image_picker/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/image_picker/image_picker_android/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/image_picker/image_picker_for_web/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/image_picker/image_picker_ios/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/image_picker/image_picker_linux/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/image_picker/image_picker_macos/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/image_picker/image_picker_platform_interface/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/image_picker/image_picker_windows/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/in_app_purchase/in_app_purchase/example/test_driver/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/in_app_purchase/in_app_purchase/example/android/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/in_app_purchase/in_app_purchase/example/integration_test/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/in_app_purchase/in_app_purchase/example/ios/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/in_app_purchase/in_app_purchase/example/lib/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/in_app_purchase/in_app_purchase/example/macos/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/in_app_purchase/in_app_purchase_storekit/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/in_app_purchase/in_app_purchase/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/in_app_purchase/in_app_purchase_android/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/in_app_purchase/in_app_purchase_platform_interface/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/local_auth/local_auth_windows/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/local_auth/local_auth/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/local_auth/local_auth_android/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/local_auth/local_auth_ios/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/local_auth/local_auth_platform_interface/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/path_provider/path_provider_windows/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/path_provider/path_provider/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/path_provider/path_provider_android/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/path_provider/path_provider_foundation/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/path_provider/path_provider_linux/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/path_provider/path_provider_platform_interface/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/pigeon/tool/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/pigeon/bin/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/pigeon/ci/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/pigeon/doc/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/pigeon/lib/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/pigeon/pigeons/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/pigeon/platform_tests/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/pigeon/test/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/pigeon/example/lib/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/pigeon/example/app/windows/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/pigeon/example/app/android/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/pigeon/example/app/integration_test/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/pigeon/example/app/ios/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/pigeon/example/app/lib/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/pigeon/example/app/macos/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/pigeon/example/app/pigeons/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/pigeon/example/app/test_driver/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/shared_preferences/shared_preferences/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/shared_preferences/shared_preferences_android/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/shared_preferences/shared_preferences_foundation/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/shared_preferences/shared_preferences_linux/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/shared_preferences/shared_preferences_platform_interface/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/shared_preferences/shared_preferences_web/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/shared_preferences/shared_preferences_windows/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/url_launcher/url_launcher_android/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/url_launcher/url_launcher_ios/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/url_launcher/url_launcher_linux/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/url_launcher/url_launcher_macos/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/url_launcher/url_launcher_platform_interface/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/url_launcher/url_launcher_web/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/url_launcher/url_launcher_windows/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/url_launcher/url_launcher/lib/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/url_launcher/url_launcher/test/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/url_launcher/url_launcher/example/macos/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/url_launcher/url_launcher/example/test_driver/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/url_launcher/url_launcher/example/web/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/url_launcher/url_launcher/example/windows/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/url_launcher/url_launcher/example/android/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/url_launcher/url_launcher/example/integration_test/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/url_launcher/url_launcher/example/ios/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/url_launcher/url_launcher/example/lib/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/url_launcher/url_launcher/example/linux/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/webview_flutter/webview_flutter_wkwebview/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/webview_flutter/webview_flutter/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/webview_flutter/webview_flutter_android/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/webview_flutter/webview_flutter_platform_interface/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/webview_flutter/webview_flutter_web/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/webview_flutter-v4.4.4/webview_flutter_platform_interface/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/webview_flutter-v4.4.4/webview_flutter_web/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/webview_flutter-v4.4.4/webview_flutter_wkwebview/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/webview_flutter-v4.4.4/webview_flutter/*" desc="desc files"/>
+                <filteritem type="filepath" name="packages/webview_flutter-v4.4.4/webview_flutter_android/*" desc="desc files"/>
+            </filefilter>
+            <filefilter name="defaultPolicyFilter" desc="Filters for compatibility，license header policies">
+            </filefilter>
+            <filefilter name="licenseFileNamePolicyFilter" desc="Filters for LICENSE file policies">
+            </filefilter>
+            <filefilter name="readmeFileNamePolicyFilter" desc="Filters for README file policies">
+            </filefilter>
+            <filefilter name="readmeOpenSourcefileNamePolicyFilter" desc="Filters for README.OpenSource file policies">
+            </filefilter>
+            <filefilter name="binaryFileTypePolicyFilter" desc="Filters for binary file policies">
+            	<filteritem type="filename" name="*.iml|*.json|*.txt" desc="desc files"/>
+            </filefilter>
+        </filefilterlist>
+    </oatconfig>
+</configuration>
